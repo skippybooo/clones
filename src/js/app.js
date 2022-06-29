@@ -14,14 +14,37 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 });
 
+//---------------Add Scroll Event Listener with Multiple Calbacks-----
+
+window.addEventListener("scroll", () => {
+  doughnutAnimate(), navHighlighter();
+});
+
+//---------------Animate Doughnuts-------------------------------
+
+let doughnuts = document.querySelectorAll(".product-item__chart-circle");
+
+function doughnutAnimate() {
+  // doughnuts = document.querySelectorAll(".product-item__chart-circle");
+  for (let i = 0; i < doughnuts.length; i++) {
+    let windowHeight = window.innerHeight;
+    let elementTop = doughnuts[i].getBoundingClientRect().top;
+    let elementVisible = 0;
+    if (elementTop < windowHeight - elementVisible) {
+      doughnuts[i].classList.add("animate-doughnut");
+    } else {
+      doughnuts[i].classList.remove("animate-doughnut");
+    }
+  }
+}
+
 //--------------Highlignt Nav Links--------------------------------
 
-// Get all sections that have an ID defined
-const sections = document.querySelectorAll("section[id]");
-console.log(sections);
+// Get all sectionn wrappers by their className
+const sections = document.querySelectorAll(".product-item__wrapper");
 
 // Add an event listener listening for scroll
-window.addEventListener("scroll", navHighlighter);
+// window.addEventListener("scroll", navHighlighter);
 
 function navHighlighter() {
   // Get current scroll position
@@ -42,9 +65,6 @@ function navHighlighter() {
       document
         .querySelector(".left-middle a[href*=" + sectionId + "]")
         .classList.add("active");
-      console.log(
-        document.querySelector(".left-middle a[href*=" + sectionId + "]")
-      );
     } else {
       document
         .querySelector(".left-middle a[href*=" + sectionId + "]")
