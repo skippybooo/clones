@@ -4,6 +4,7 @@
 @import "first-screen";
 @import "products";
 @import "sidebar-right";
+@import "swiper-bundle.min";
 
 @mixin font($font_name, $file_name, $weight, $style) {
   @font-face {
@@ -25,6 +26,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 .page {

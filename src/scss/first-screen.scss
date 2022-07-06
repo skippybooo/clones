@@ -1,3 +1,7 @@
+// :root {
+//   --swiper-theme-color: #fff;
+// }
+
 .first-screen {
   display: flex;
   flex-direction: column;
@@ -13,7 +17,7 @@
   justify-content: center;
   align-items: flex-start;
   padding-top: 1.5rem;
-  .header-links__link {
+  &__link {
     color: #fff;
     text-transform: uppercase;
     font-size: 0.875rem;
@@ -52,5 +56,92 @@
     //transform: scale(1.02);
     color: black;
     background-color: #fff;
+  }
+}
+
+.main-slider-wrapper {
+  position: relative;
+  display: flex;
+  position: relative;
+  // width: 640px;
+  height: 386px; //340 + 24 + 12
+  overflow: visible;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  display: absolute;
+  width: 64px !important;
+  height: 64px !important;
+  top: 154px !important;
+  color: white !important;
+  opacity: 0.6 !important;
+  transition: all 0.1s ease-in-out !important;
+  &:hover {
+    opacity: 1 !important;
+  }
+  &::after {
+    content: "" !important;
+  }
+}
+
+.swiper-button-prev {
+  background: url("../img/slider-arrow-left.svg") 50% 50% no-repeat !important;
+  left: -64px !important;
+  &:hover {
+    transform: translatex(-8px) !important;
+  }
+}
+
+.swiper-button-next {
+  background: url("../img/slider-arrow-right.svg") 50% 50% no-repeat !important;
+  right: -64px !important;
+  &:hover {
+    transform: translatex(8px) !important;
+  }
+}
+
+.swiper-pagination-bullet,
+.swiper-pagination-bullet-active {
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  opacity: 1 !important;
+  border: 1px solid #fff !important;
+  background: none !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #fff !important;
+}
+
+.swiper {
+  max-width: 640px;
+  height: 340px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  overflow: visible !important;
+  pointer-events: none !important;
+
+  &-slide {
+    background-position: center;
+    background-size: cover;
+    width: 340px;
+    height: 340px;
+    opacity: 0 !important;
+    // transition: opacity 0.2s ease-in-out;
+    &-active,
+    &-prev,
+    &-next {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+
+    & img {
+      display: block;
+      width: 100%;
+      border-radius: 9px;
+      box-shadow: 0 0 24px black;
+    }
   }
 }
