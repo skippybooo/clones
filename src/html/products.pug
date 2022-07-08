@@ -19,7 +19,7 @@
         "flowering": 8,
         "yield": [150, 250],
         "climate": "Temperate climate",
-        "flavour": ["spicy", "pungent", "earthy", "sweet"],
+        "flavour": ["Spicy", "Pungent", "Earthy", "Sweet"],
         "height": [40, 80],
         "harvest": "All year",
         "difficulty": "Easy"
@@ -34,6 +34,7 @@
       "percentage": [75, 21, 4],
       "images": [
         "product_2-00.jpg",
+        "product_2-01.jpg",
       ],
       "grow_info": {
         "thc": 25,
@@ -42,7 +43,7 @@
         "flowering": 7,
         "yield": [170, 290],
         "climate": "Temperate climate",
-        "flavour": ["spicy", "pungent", "earthy", "sweet"],
+        "flavour": ["Spicy", "Pungent", "Earthy", "Sweet"],
         "height": [40, 80],
         "harvest": "All year",
         "difficulty": "Easy"
@@ -65,7 +66,7 @@
         "flowering": 7,
         "yield": [170, 290],
         "climate": "Temperate climate",
-        "flavour": ["spicy", "pungent", "earthy", "sweet"],
+        "flavour": ["Spicy", "Pungent", "Earthy", "Sweet"],
         "height": [40, 80],
         "harvest": "All year",
         "difficulty": "Easy"
@@ -88,7 +89,7 @@
         "flowering": 7,
         "yield": [170, 290],
         "climate": "Temperate climate",
-        "flavour": ["spicy", "pungent", "earthy", "sweet"],
+        "flavour": ["Spicy", "Pungent", "Earthy", "Sweet"],
         "height": [40, 80],
         "harvest": "All year",
         "difficulty": "Easy"
@@ -111,7 +112,7 @@
         "flowering": 7,
         "yield": [170, 290],
         "climate": "Temperate climate",
-        "flavour": ["spicy", "pungent", "earthy", "sweet"],
+        "flavour": ["Spicy", "Pungent", "Earthy", "Sweet"],
         "height": [40, 80],
         "harvest": "All year",
         "difficulty": "Easy"
@@ -134,7 +135,7 @@
         "flowering": 7,
         "yield": [170, 290],
         "climate": "Temperate climate",
-        "flavour": ["spicy", "pungent", "earthy", "sweet"],
+        "flavour": ["Spicy", "Pungent", "Earthy", "Sweet"],
         "height": [40, 80],
         "harvest": "All year",
         "difficulty": "Easy"
@@ -157,7 +158,7 @@
         "flowering": 7,
         "yield": [170, 290],
         "climate": "Temperate climate",
-        "flavour": ["spicy", "pungent", "earthy", "sweet"],
+        "flavour": ["Spicy", "Pungent", "Earthy", "Sweet"],
         "height": [40, 80],
         "harvest": "All year",
         "difficulty": "Easy"
@@ -180,7 +181,7 @@
         "flowering": 7,
         "yield": [170, 290],
         "climate": "Temperate climate",
-        "flavour": ["spicy", "pungent", "earthy", "sweet"],
+        "flavour": ["Spicy", "Pungent", "Earthy", "Sweet"],
         "height": [40, 80],
         "harvest": "All year",
         "difficulty": "Easy"
@@ -203,7 +204,7 @@
         "flowering": 7,
         "yield": [170, 290],
         "climate": "Temperate climate",
-        "flavour": ["spicy", "pungent", "earthy", "sweet"],
+        "flavour": ["Spicy", "Pungent", "Earthy", "Sweet"],
         "height": [40, 80],
         "harvest": "All year",
         "difficulty": "Easy"
@@ -226,7 +227,7 @@
         "flowering": 7,
         "yield": [170, 290],
         "climate": "Temperate climate",
-        "flavour": ["spicy", "pungent", "earthy", "sweet"],
+        "flavour": ["Spicy", "Pungent", "Earthy", "Sweet"],
         "height": [40, 80],
         "harvest": "All year",
         "difficulty": "Easy"
@@ -249,36 +250,39 @@
         "flowering": 7,
         "yield": [170, 290],
         "climate": "Temperate climate",
-        "flavour": ["spicy", "pungent", "earthy", "sweet"],
+        "flavour": ["Spicy", "Pungent", "Earthy", "Sweet"],
         "height": [40, 80],
         "harvest": "All year",
         "difficulty": "Easy"
       },
       "description": "Dwarf Low Flyer autoflower marijuana is easy to moderate grow that can thrive in both indoor and outdoor growing spaces. With 70% indica, 20% sativa, and 10% ruderalis and the offspring of a cross between Early Girl, Low Rider, and Ruderalis, this strain is undoubtedly a sure hit. Just like many of the best strains on the market nowadays, this one originated from Spain. At 10.85%, the THC content of this beautiful plant is nowhere as high as some others in Crop King’s line, but that is what sets it apart. Dwarf Low Flyer autoflower marijuana delivers a sweet and smooth natural kind of buzz. It is pure fun and relaxation, with no extreme psychedelic or couch-locking effects. This is the perfect smoke for those times you just want to relax for a bit and then go back to what you were doing right after. A good option for beginner smokers and veterans who want something relatively mild for a change.<br>If you are looking for a smaller plant that can easily be stashed away, our Dwarf Low Flyer is the right choice."
     },
-
   ]
 
 .products-container#content
 
   each product, i in products
     .product-item__wrapper(id = 'product-' + products[i].id)
-      .product-item__arrow-left
+      .product-item__arrow-left(class= 'swiper-button-prev' + products[i].id)
         img(src='@img/slider-arrow-left.svg')
-      .product-item__arrow-right
+      .product-item__arrow-right(class= 'swiper-button-next' + products[i].id)
         img(src='@img/slider-arrow-right.svg')
       section.product-item
         .product-item__head
           .product-item__top
             .product-item__title #{products[i].name}
             .product-item__tags 
-              each tag, i in product.tags
-                .product-item__tag= (i < product.tags.length-1) ? tag + ', ' : tag
-          .product-item__slider
-            each image in product.images
-              img(src= '@img/products/' + image)
+              each tag, j in product.tags
+                .product-item__tag= (j < product.tags.length-1) ? tag + ', ' : tag
+
+          .product-item__slider.swiper(class= 'swiper' + products[i].id)
+            .swiper-wrapper
+              each image in product.images
+                img.swiper-slide(src= '@img/products/' + image)
+
           .product-item__bottom
             .product-item__bullets
+              .product-item__bullets-wrapper(class= 'swiper-pagination' + products[i].id)
 
         .accordion
           .accordion__container.active
@@ -326,10 +330,10 @@
                       = (i < product.grow_info.genetics.length-1) ? parent + ', ' : parent
                 .product-item__grow-row
                   .product-item__grow-prop Flowering:
-                  .product-item__grow-value= product.grow_info.flowering + 'weeks'
+                  .product-item__grow-value= product.grow_info.flowering + ' weeks'
                 .product-item__grow-row
                   .product-item__grow-prop Yield:
-                  .product-item__grow-value= product.grow_info.yield[0] + '-' + product.grow_info.yield[1] + 'grams'
+                  .product-item__grow-value= product.grow_info.yield[0] + ' – ' + product.grow_info.yield[1] + ' grams'
                 .product-item__grow-row
                   .product-item__grow-prop Climate:
                   .product-item__grow-value= product.grow_info.climate
@@ -340,7 +344,7 @@
                       = (i < product.grow_info.flavour.length-1) ? flavour + ', ' : flavour
                 .product-item__grow-row
                   .product-item__grow-prop Height:
-                  .product-item__grow-value= product.grow_info.height[0] + '-' + product.grow_info.height[1] + 'cm'
+                  .product-item__grow-value= product.grow_info.height[0] + ' – ' + product.grow_info.height[1] + ' cm'
                 .product-item__grow-row
                   .product-item__grow-prop Harvest:
                   .product-item__grow-value= product.grow_info.harvest
