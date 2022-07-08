@@ -58,7 +58,7 @@ window.onload = () => {
     // Now we loop through sections to get height, top and ID values for each
     sections.forEach((currentSection) => {
       const sectionHeight = currentSection.offsetHeight;
-      const sectionTop = currentSection.offsetTop - 50;
+      const sectionTop = currentSection.offsetTop - 24;
       let sectionId = currentSection.getAttribute("id");
 
       /*
@@ -117,7 +117,7 @@ window.onload = () => {
 
   //--------------Swiper-----------------------------
 
-  var swiper = new Swiper(".mySwiper", {
+  let swiper = new Swiper(".mySwiper", {
     effect: "coverflow",
     modules: [Navigation, Pagination, EffectCoverflow, Autoplay],
     // autoHeight: true,
@@ -134,11 +134,11 @@ window.onload = () => {
       slideShadows: false,
     },
     navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
+      nextEl: ".swiper-button-next0",
+      prevEl: ".swiper-button-prev0",
     },
     pagination: {
-      el: ".swiper-pagination",
+      el: ".swiper-pagination0",
       clickable: true,
     },
     autoplay: {
@@ -147,4 +147,30 @@ window.onload = () => {
       disableOnInteraction: false,
     },
   });
+
+  let itemSwipers = [];
+
+  let swipersCount = document.querySelectorAll(".product-item__slider").length;
+
+  for (let i = 1; i < swipersCount + 1; i++) {
+    itemSwipers[i] = new Swiper(".swiper" + i, {
+      modules: [Navigation, Pagination, EffectCoverflow, Autoplay],
+      spaceBetween: 0,
+      // loop: true,
+      navigation: {
+        nextEl: ".swiper-button-next" + i,
+        prevEl: ".swiper-button-prev" + i,
+      },
+      pagination: {
+        el: ".swiper-pagination" + i,
+        clickable: true,
+      },
+      autoplay: {
+        delay: 2100,
+        pauseOnMouseEnter: true,
+        disableOnInteraction: false,
+      },
+    });
+    console.log(itemSwipers[i]);
+  }
 };
