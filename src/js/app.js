@@ -5,6 +5,7 @@ import Swiper, {
   Navigation,
   Pagination,
 } from "swiper";
+import * as ripple from "ripple-js";
 
 flsFunctions.isWebp();
 
@@ -171,6 +172,7 @@ window.onload = () => {
         disableOnInteraction: false,
       },
     });
-    console.log(itemSwipers[i]);
   }
+
+  // ------------------ RIPPLES ON CLICK-----------------
 };

@@ -45,6 +45,7 @@
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
+    "ripple-js": "^1.4.4",
     "swiper": "^8.2.6"
   }
 }
